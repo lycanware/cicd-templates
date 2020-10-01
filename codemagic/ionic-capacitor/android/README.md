@@ -1,6 +1,4 @@
-# Codemagic
-
-## Google Play
+# Google Play
 
 The first version of the app must be uploaded manually, so it's possible these examples will fail to publish at first. If this happens, open the build in Codemagic, download the APK and upload it manually to Google Play. Future builds should then publish.
 
