@@ -1,6 +1,4 @@
-# Codemagic Examples
-
-## Apple App Store
+# Apple App Store
 
 Before publishing will work, you must setup the App within your iTunes Connect account.
 
