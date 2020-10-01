@@ -1,6 +1,6 @@
 workflows:
   android-workflow:
-    name: "<workflow_display_name>"
+    name: "<WORKFLOW_DISPLAY_NAME>"
     max_build_duration: 60
     environment:
       vars:
@@ -53,4 +53,4 @@ workflows:
         track: alpha
       email:
         recipients:
-          - <AN_EMAIL_ADDRESS>
+          - <EMAIL_ADDRESS>

@@ -1,6 +1,6 @@
 workflows:
   ios-workflow:
-    name: "<workflow_display_name>"
+    name: "<WORKFLOW_DISPLAY_NAME>"
     max_build_duration: 60
     environment:
       vars:
@@ -58,5 +58,5 @@ workflows:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/*.dSYM
     publishing:
       app_store_connect:
-        apple_id: <YOUR_APPLE_DEVELOPER_EMAIL>
+        apple_id: Encrypted(<YOUR_APPLE_DEVELOPER_EMAIL>)
         password: Encrypted(<YOUR_APP_SPECIFIC_PASSWORD>)

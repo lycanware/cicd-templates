@@ -6,7 +6,7 @@ Currently Codemagic only provides a UI for Flutter builds. It can build anything
 
 ## Encrypted Values
 
-For code signing and deployment the config file must contain sensitive credentials. These should never be entered as plain text. Codemagic provides an easy way to encrypt the values.
+For code signing and deployment the config file must contain sensitive credentials. These should never be entered as plain text. Codemagic provides an easy way to encrypt these values.
 
 In Codemagic, navigate to your app, you should find a link titled `Encrypt environment variables`. You can encrypt both strings and files. Encrypted values look like this: `Encrypted(YOUR_ENCRYPTED_VALUE)`
 

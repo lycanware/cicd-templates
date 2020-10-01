@@ -4,6 +4,12 @@
 
 The first version of the app must be uploaded manually, so it's possible these examples will fail to publish at first. If this happens, open the build in Codemagic, download the APK and upload it manually to Google Play. Future builds should then publish.
 
+Make sure you update the following:
+
+- <WORKFLOW_DISPLAY_NAME>
+- <YOUR_PACKAGE_NAME>
+- <EMAIL_ADDRESS>
+
 ### Code Signing
 
 To build your app, Codemagic must be able to code sign. You need to produce a keystore file. Assuming you have Android studio, you should have access to the `Java Keytool` utility. Here are 2 useful links that show you how to produce the keystore file:

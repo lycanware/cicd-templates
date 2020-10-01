@@ -4,6 +4,11 @@
 
 Before publishing will work, you must setup the App within your iTunes Connect account.
 
+Make sure you update the following:
+
+- <WORKFLOW_DISPLAY_NAME>
+- <YOUR_PACKAGE_NAME>
+
 ### Code Signing
 
 To build your app, Codemagic must be able to code sign. This example uses automatic code signing. You must setup the following:
@@ -47,6 +52,6 @@ The App Specific Password goes into this section.
 ```yaml
 publishing:
   app_store_connect:
-    apple_id: <YOUR_APPLE_DEVELOPER_EMAIL>
+    apple_id: Encrypted(<YOUR_APPLE_DEVELOPER_EMAIL>)
     password: Encrypted(<YOUR_APP_SPECIFIC_PASSWORD>)
 ```
