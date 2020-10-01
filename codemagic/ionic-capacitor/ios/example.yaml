@@ -1,0 +1,62 @@
+workflows:
+  ios-workflow:
+    name: "<WORKFLOW_DISPLAY_NAME>"
+    max_build_duration: 60
+    environment:
+      vars:
+        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
+        XCODE_SCHEME: "App"
+        APP_STORE_CONNECT_PRIVATE_KEY: >-
+          Encrypted(<CONNECT_PRIVATE_KEY_FILE>)
+        APP_STORE_CONNECT_KEY_IDENTIFIER: >-
+          Encrypted(<KEY_IDENTIFIER>)
+        APP_STORE_CONNECT_ISSUER_ID: >-
+          Encrypted(<ISSUER_ID>)
+        CERTIFICATE_PRIVATE_KEY: >-
+          Encrypted(<CERTIFICATE_PRIVATE_KEY>)
+        xcode: latest
+        cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: "*master*"
+          include: true
+          source: true
+    scripts:
+      - name: Install NPM and Build
+        script: |
+          npm install --quiet --no-optional
+          npm run build
+          ionic info
+          ionic deploy manifest
+          ionic capacitor sync ios --no-build
+      - name: Setup keychain
+        script: |
+          ls -R ./ios/App
+          find ./ios/App -name "Podfile" -execdir pod install \;
+          keychain initialize
+          app-store-connect fetch-signing-files <YOUR_PACKAGE_NAME> --private-key "$APP_STORE_CONNECT_PRIVATE_KEY" --type IOS_APP_STORE --create
+          keychain add-certificates
+      - name: Increment build number
+        script: |
+          #!/bin/sh
+          set -e
+          set -x
+          cd ios/App/
+          agvtool new-marketing-version 1.0.$((BUILD_NUMBER + 1))
+          agvtool new-version -all 3
+      - name: Setup code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
+      - name: Build IPA
+        script: |
+          xcodebuild -workspace "$XCODE_WORKSPACE" -list
+          xcode-project build-ipa --workspace "$XCODE_WORKSPACE" --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+    publishing:
+      app_store_connect:
+        apple_id: Encrypted(<YOUR_APPLE_DEVELOPER_EMAIL>)
+        password: Encrypted(<YOUR_APP_SPECIFIC_PASSWORD>)
