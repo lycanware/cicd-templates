@@ -1,4 +1,4 @@
-# Codemagic
+# Codemagic Examples
 
 ## Apple App Store
 
@@ -6,8 +6,8 @@ Before publishing will work, you must setup the App within your iTunes Connect a
 
 Make sure you update the following:
 
-- <WORKFLOW_DISPLAY_NAME>
-- <YOUR_PACKAGE_NAME>
+- `<WORKFLOW_DISPLAY_NAME>`
+- `<YOUR_PACKAGE_NAME>`
 
 ### Code Signing
 

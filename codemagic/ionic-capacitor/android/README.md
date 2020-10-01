@@ -6,9 +6,9 @@ The first version of the app must be uploaded manually, so it's possible these e
 
 Make sure you update the following:
 
-- <WORKFLOW_DISPLAY_NAME>
-- <YOUR_PACKAGE_NAME>
-- <EMAIL_ADDRESS>
+- `<WORKFLOW_DISPLAY_NAME>`
+- `<YOUR_PACKAGE_NAME>`
+- `<EMAIL_ADDRESS>`
 
 ### Code Signing
 
