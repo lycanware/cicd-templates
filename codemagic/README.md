@@ -1,4 +1,4 @@
-# Codemagic
+# Codemagic Examples
 
 ## Overview
 
